@@ -67,5 +67,25 @@ button {
   margin: 5px 0 0;
   color: #94a3b8;
   font-size: 14px;
+}.profile 
+  
+  {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+}.post
+  
+  {
+  background: #1e293b;
+  margin: 15px auto;
+  padding: 15px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 }
