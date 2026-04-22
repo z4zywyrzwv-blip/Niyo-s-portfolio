@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NIYO | Growth Journal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="login">
+    <h2>Login</h2>
+    <input id="user" placeholder="Username">
+    <input id="pass" type="password" placeholder="Password">
+    <button onclick="login()">Enter</button>
+  </div>
+
+  <div id="app" style="display:none;">
+    <h1>My Growth Journal</h1>
+
+    <textarea id="title" placeholder="Title"></textarea>
+    <textarea id="content" placeholder="Write your journey..."></textarea>
+    <button onclick="addPost()">Publish</button>
+
+    <div id="posts"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
