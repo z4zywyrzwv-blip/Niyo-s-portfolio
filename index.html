@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NIYO | Growth Journal</title>
+  <title>CyberMechanic Journal</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div id="login">
     <h2>Login</h2>
-    <input id="user" placeholder="Username">
+    <input id="user" placeholder="Email">
     <input id="pass" type="password" placeholder="Password">
     <button onclick="login()">Enter</button>
   </div>
@@ -23,15 +23,46 @@
 
     <div id="posts"></div>
   </div>
-  <script src="app.js"></script>const firebaseConfig = {
-  apiKey: "AIzaSyC6-nAvXp0zAnUPL1HG5kQ2Vmnf4k95CSw",
-  authDomain: "cybermechanicjourney.firebaseapp.com",
-  projectId: "cybermechanicjourney",
-  storageBucket: "cybermechanicjourney.firebasestorage.app",
-  messagingSenderId: "127296364969",
-  appId: "1:127296364969:web:fdc9453e016450285ae4b8"
-};
+
+  <!-- Firebase Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC6-nAvXp0zAnUPL1HG5kQ2Vmnf4k95CSw",
+      authDomain: "cybermechanicjourney.firebaseapp.com",
+      projectId: "cybermechanicjourney",
+      storageBucket: "cybermechanicjourney.firebasestorage.app",
+      messagingSenderId: "127296364969",
+      appId: "1:127296364969:web:fdc9453e016450285ae4b8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.login = async function () {
+      const email = document.getElementById("user").value;
+      const password = document.getElementById("pass").value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        document.getElementById("login").style.display = "none";
+        document.getElementById("app").style.display = "block";
+      } catch (error) {
+        alert("Login failed: " + error.message);
+      }
+    };
+
+    window.addPost = function () {
+      const title = document.getElementById("title").value;
+      const content = document.getElementById("content").value;
+
+      const post = document.createElement("div");
+      post.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+      document.getElementById("posts").prepend(post);
+    };
+  </script>
 
 </body>
-  <button onclick="login()">Enter</button>
 </html>
